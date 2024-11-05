@@ -5,7 +5,7 @@ import { execSync } from "node:child_process";
 
 // read version from package.json
 const pkg = JSON.parse(await readFile("package.json"));
-process.env.ULTRAVIOLET_VERSION = pkg.version;
+process.env.OMEGAVIOLET_VERSION = pkg.version;
 
 const isDevelopment = process.argv.includes("--dev");
 
@@ -27,10 +27,10 @@ let builder = await build({
 		"uv.sw": "./src/uv.sw.js",
 	},
 	define: {
-		"process.env.ULTRAVIOLET_VERSION": JSON.stringify(
-			process.env.ULTRAVIOLET_VERSION
+		"process.env.OMEGAVIOLET_VERSION": JSON.stringify(
+			process.env.OMEGAVIOLET_VERSION
 		),
-		"process.env.ULTRAVIOLET_COMMIT_HASH": (() => {
+		"process.env.OMEGAVIOLET_COMMIT_HASH": (() => {
 			try {
 				let hash = JSON.stringify(
 					execSync("git rev-parse --short HEAD", {

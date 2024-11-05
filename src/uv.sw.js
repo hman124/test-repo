@@ -3,9 +3,9 @@
 // This is to allow us to produce a generic bundle with no hard-coded paths.
 
 /**
- * @type {import('../uv').UltravioletCtor}
+ * @type {import('../uv').OmegavioletCtor}
  */
-const Ultraviolet = self.Ultraviolet;
+const Omegaviolet = self.Omegaviolet;
 
 const cspHeaders = [
 	"cross-origin-embedder-policy",
@@ -27,15 +27,15 @@ const cspHeaders = [
 ];
 const emptyMethods = ["GET", "HEAD"];
 
-class UVServiceWorker extends Ultraviolet.EventEmitter {
+class UVServiceWorker extends Omegaviolet.EventEmitter {
 	constructor(config = __uv$config) {
 		super();
 		if (!config.prefix) config.prefix = "/service/";
 		this.config = config;
 		/**
-		 * @type {InstanceType<Ultraviolet['BareClient']>}
+		 * @type {InstanceType<Omegaviolet['BareClient']>}
 		 */
-		this.bareClient = new Ultraviolet.BareClient();
+		this.bareClient = new Omegaviolet.BareClient();
 	}
 	/**
 	 *
@@ -62,7 +62,7 @@ class UVServiceWorker extends Ultraviolet.EventEmitter {
 			if (!request.url.startsWith(location.origin + this.config.prefix))
 				return await fetch(request);
 
-			const ultraviolet = new Ultraviolet(this.config);
+			const ultraviolet = new Omegaviolet(this.config);
 
 			if (typeof this.config.construct === "function") {
 				this.config.construct(ultraviolet, "service");
@@ -300,7 +300,7 @@ class UVServiceWorker extends Ultraviolet.EventEmitter {
 			return renderError(err, fetchedURL);
 		}
 	}
-	static Ultraviolet = Ultraviolet;
+	static Omegaviolet = Omegaviolet;
 }
 
 self.UVServiceWorker = UVServiceWorker;
@@ -346,7 +346,7 @@ class RequestContext {
 	/**
 	 *
 	 * @param {Request} request
-	 * @param {Ultraviolet} ultraviolet
+	 * @param {Omegaviolet} ultraviolet
 	 * @param {BodyInit} body
 	 */
 	constructor(request, ultraviolet, body = null) {
@@ -413,10 +413,10 @@ function errorTemplate(trace, fetchedURL) {
 				)};
         reload.addEventListener("click", () => location.reload());
         uvVersion.textContent = ${JSON.stringify(
-					process.env.ULTRAVIOLET_VERSION
+					process.env.OMEGAVIOLET_VERSION
 				)};
         uvBuild.textContent = ${JSON.stringify(
-					process.env.ULTRAVIOLET_COMMIT_HASH
+					process.env.OMEGAVIOLET_COMMIT_HASH
 				)};
     `;
 
@@ -446,12 +446,12 @@ function errorTemplate(trace, fetchedURL) {
         <p>If you're the administrator of <b id="uvHostname"></b>, try:</p>
         <ul>
         <li>Restarting your server</li>
-        <li>Updating Ultraviolet</li>
-        <li>Troubleshooting the error on the <a href="https://github.com/titaniumnetwork-dev/Ultraviolet" target="_blank">GitHub repository</a></li>
+        <li>Updating Omegaviolet</li>
+        <li>Troubleshooting the error on the <a href="https://github.com/titaniumnetwork-dev/Omegaviolet" target="_blank">GitHub repository</a></li>
         </ul>
         <button id="reload">Reload</button>
         <hr />
-        <p><i>Ultraviolet v<span id="uvVersion"></span> (build <span id="uvBuild"></span>)</i></p>
+        <p><i>Omegaviolet v<span id="uvVersion"></span> (build <span id="uvBuild"></span>)</i></p>
         <script src="${
 					"data:application/javascript," + encodeURIComponent(script)
 				}"></script>

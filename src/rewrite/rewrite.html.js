@@ -1,10 +1,10 @@
 /**
- * @typedef {import('./index').default} Ultraviolet
+ * @typedef {import('./index').default} Omegaviolet
  */
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 export function attributes(ctx, meta = ctx.meta) {
 	const { html, js, attributePrefix } = ctx;
@@ -78,7 +78,7 @@ export function attributes(ctx, meta = ctx.meta) {
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 export function text(ctx) {
 	const { html, js, css } = ctx;
@@ -191,7 +191,7 @@ export function isEvent(name) {
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 export function injectHead(ctx) {
 	const { html } = ctx;

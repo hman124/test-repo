@@ -1,7 +1,7 @@
 /**
- * @type {import('../uv').UltravioletCtor}
+ * @type {import('../uv').OmegavioletCtor}
  */
-const Ultraviolet = self.Ultraviolet;
+const Omegaviolet = self.Omegaviolet;
 
 /**
  * @type {import('../uv').UVClientCtor}
@@ -31,7 +31,7 @@ self.__uvHook = __uvHook;
  * @returns
  */
 function __uvHook(window) {
-	if ("__uv" in window && window.__uv instanceof Ultraviolet) return false;
+	if ("__uv" in window && window.__uv instanceof Omegaviolet) return false;
 
 	if (window.document && !!window.window) {
 		window.document
@@ -42,7 +42,7 @@ function __uvHook(window) {
 	const worker = !window.window;
 	const master = "__uv";
 	const methodPrefix = "__uv$";
-	const __uv = new Ultraviolet(__uv$config);
+	const __uv = new Omegaviolet(__uv$config);
 
 	/*if (typeof config.construct === 'function') {
         config.construct(__uv, worker ? 'worker' : 'window');
@@ -50,9 +50,9 @@ function __uvHook(window) {
 	let bareClient;
 	if (!worker) {
 		// websockets
-		bareClient = new Ultraviolet.BareClient();
+		bareClient = new Omegaviolet.BareClient();
 	} else {
-		bareClient = new Ultraviolet.BareClient(
+		bareClient = new Omegaviolet.BareClient(
 			new Promise((resolve) => {
 				addEventListener("message", ({ data }) => {
 					if (typeof data !== "object") return;
@@ -209,7 +209,7 @@ function __uvHook(window) {
 		methodPrefix + "modifiedStyle",
 		methodPrefix + "config",
 		methodPrefix + "dispatched",
-		"Ultraviolet",
+		"Omegaviolet",
 		"__uvHook",
 	];
 
@@ -403,7 +403,7 @@ function __uvHook(window) {
 
 	// IDB
 	client.idb.on("idbFactoryOpen", (event) => {
-		// Don't modify the Ultraviolet cookie database
+		// Don't modify the Omegaviolet cookie database
 		if (event.data.name === "__op") return;
 		event.data.name = `${__uv.meta.url.origin}@${event.data.name}`;
 	});

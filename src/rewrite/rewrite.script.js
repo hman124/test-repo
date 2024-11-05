@@ -1,10 +1,10 @@
 /**
- * @typedef {import('./index').default} Ultraviolet
+ * @typedef {import('./index').default} Omegaviolet
  */
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 function property(ctx) {
 	const { js } = ctx;
@@ -114,7 +114,7 @@ function property(ctx) {
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 function identifier(ctx) {
 	const { js } = ctx;
@@ -180,7 +180,7 @@ function identifier(ctx) {
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 function wrapEval(ctx) {
 	const { js } = ctx;
@@ -209,7 +209,7 @@ function wrapEval(ctx) {
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 function importDeclaration(ctx) {
 	const { js } = ctx;
@@ -237,7 +237,7 @@ function importDeclaration(ctx) {
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 function dynamicImport(ctx) {
 	const { js } = ctx;
@@ -262,7 +262,7 @@ function dynamicImport(ctx) {
 
 /**
  *
- * @param {Ultraviolet} ctx
+ * @param {Omegaviolet} ctx
  */
 function unwrap(ctx) {
 	const { js } = ctx;
